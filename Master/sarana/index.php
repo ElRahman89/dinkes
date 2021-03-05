@@ -98,20 +98,20 @@ if($row == 0){
 <!-- Count File and Load Data -->
 <?php 
 
-$jumlah_dokter=mysqli_query($conn, "SELECT SUM(Jml_Dokter) from Data_Pemohon");
+$jumlah_dokter=mysqli_query($conn, "SELECT SUM(Jml_Dokter) from data_pemohon");
 $jum_dokter=mysqli_fetch_array($jumlah_dokter);
 
 $jumlah_klinik_aktif=mysqli_query($conn, "SELECT COUNT(Keterangan_Pemohon) FROM `data_pemohon` WHERE Keterangan_Pemohon NOT LIKE '%TUTUP%'");
 $jum_kpaktif=mysqli_fetch_array($jumlah_klinik_aktif);
 
-$jumlah_klinik_pasif=mysqli_query($conn, "SELECT COUNT(*) FROM (SELECT Klinik_Pratama, Alamat_Klinik, Penanggung_Jawab, Tgl_Berlaku, Tgl_JatuhTempo FROM Data_Pemohon WHERE Tgl_JatuhTempo <= '$thn') src");
+$jumlah_klinik_pasif=mysqli_query($conn, "SELECT COUNT(*) FROM (SELECT Klinik_Pratama, Alamat_Klinik, Penanggung_Jawab, Tgl_Berlaku, Tgl_JatuhTempo FROM data_pemohon WHERE Tgl_JatuhTempo <= '$thn') src");
 $jum_kppasif=mysqli_fetch_array($jumlah_klinik_pasif);
 
 
-$jumlah_klinik_nakal=mysqli_query($conn, "SELECT COUNT(*) FROM (SELECT Klinik_Pratama, Alamat_Klinik, Penanggung_Jawab, Tgl_Berlaku, Tgl_JatuhTempo FROM Data_Pemohon WHERE Tgl_JatuhTempo <= '$thnbln') src");
+$jumlah_klinik_nakal=mysqli_query($conn, "SELECT COUNT(*) FROM (SELECT Klinik_Pratama, Alamat_Klinik, Penanggung_Jawab, Tgl_Berlaku, Tgl_JatuhTempo FROM data_pemohon WHERE Tgl_JatuhTempo <= '$thnbln') src");
 $jum_kpnakal=mysqli_fetch_array($jumlah_klinik_nakal);
 
-$jumlah_klinik_stop=mysqli_query($conn, "SELECT COUNT(Keterangan_Pemohon) FROM Data_Pemohon where Keterangan_Pemohon Like '%TUTUP%'");
+$jumlah_klinik_stop=mysqli_query($conn, "SELECT COUNT(Keterangan_Pemohon) FROM data_pemohon where Keterangan_Pemohon Like '%TUTUP%'");
 $jum_kpstop=mysqli_fetch_array($jumlah_klinik_stop);
 
 $sql_klinik_aktif    ="SELECT Klinik_Pratama, Alamat_Klinik, Penanggung_Jawab, Tgl_Berlaku, Tgl_JatuhTempo, status_io, status_im FROM `data_pemohon` WHERE Keterangan_Pemohon NOT LIKE '%TUTUP%'";

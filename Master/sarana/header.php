@@ -82,7 +82,7 @@
 		<div class="row">
 			<?php
 			$use=$_SESSION['username'];
-			$fo=mysqli_query($conn,"SELECT foto from Admin where Username='$use'");
+			$fo=mysqli_query($conn,"SELECT Foto from admin where username='$use'");
 			while($f=mysqli_fetch_array($fo)){
 				?>
 
